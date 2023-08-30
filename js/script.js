@@ -1,5 +1,5 @@
-import * as docx from 'docx';
-import * as fs from 'fs';; // Import the fs module for file system operations
+
+import * as docx from '../node_modules/docx/index.js';
 
 function fart() {
   const doc = new docx.Document({
@@ -21,8 +21,17 @@ function fart() {
     ],
   });
 
-  docx.Packer.toBuffer(doc).then((buffer) => {
-    // Use fs.writeFileSync instead of FileSystem.writeFileSync
-    fs.writeFileSync("My Document.docx", buffer);
-  }, (error) => console.log(error));
+  docx.Packer.toBlob(doc).then((blob) => {
+    // Create a download link for the blob
+    const url = URL.createObjectURL(blob);
+
+    // Create a link element and trigger a download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'My Document.docx';
+    a.click();
+
+    // Clean up by revoking the Object URL
+    URL.revokeObjectURL(url);
+  }).catch((error) => console.log(error));
 }
