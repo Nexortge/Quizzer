@@ -1,37 +1,21 @@
-
-import * as docx from '../node_modules/docx/index.js';
-
-function fart() {
-  const doc = new docx.Document({
-    sections: [
-      {
-        properties: {},
-        children: [
-          new docx.Paragraph({
-            children: [
-              new docx.TextRun("Hello World"),
-              new docx.TextRun({
-                text: "Foo Bar",
-                bold: true,
-              }),
-            ],
-          }),
-        ],
-      },
-    ],
-  });
-
-  docx.Packer.toBlob(doc).then((blob) => {
-    // Create a download link for the blob
+function createAndDownloadFile() {
+    // Generate the text content
+    const text = "DoodoFart";
+  
+    // Create a Blob containing the text
+    const blob = new Blob([text], { type: "text/plain" });
+  
+    // Create a URL for the Blob
     const url = URL.createObjectURL(blob);
-
-    // Create a link element and trigger a download
-    const a = document.createElement('a');
+  
+    // Create a download link
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'My Document.docx';
+    a.download = "mytextfile.txt";
+  
+    // Trigger a click event to simulate a download
     a.click();
-
-    // Clean up by revoking the Object URL
+  
+    // Release the URL object
     URL.revokeObjectURL(url);
-  }).catch((error) => console.log(error));
-}
+  }
