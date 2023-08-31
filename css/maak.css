@@ -1,0 +1,18 @@
+body{
+    background-color: gray;
+    align-items: center;
+}
+input, button{
+    width: 300px;
+    height: 25px;
+}
+.Toevoegen{
+    background-color: green;
+    border: 0px;
+    cursor: pointer;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+
