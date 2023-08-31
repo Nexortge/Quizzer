@@ -9,27 +9,31 @@
 
 <body class="flex">
   <h1>Quizzer Maker</h1>
-  <input class="vraag" placeholder="zet je vraag hier in">
+  <p>Gebruik deze tool om snel en gemakkelijk een quiz te maken en door te sturen!</p>
+  <input id="vraag0" class="vraag" placeholder="zet je vraag hier in">
   <div>
-    <input placeholder="zet je antwoord hier in">
-    <input class="check" type="checkbox">
+    <input id="antwoord1_0" placeholder="Zet je antwoord hier in">
+    <input id="checkbox1_0" class="check" type="checkbox">
   </div>
   <div>
-    <input placeholder="zet je antwoord hier in">
-    <input class="check" type="checkbox">
+    <input id="antwoord2_0" placeholder="Zet je antwoord hier in">
+    <input id="checkbox2_0" class="check" type="checkbox">
   </div>
   <div>
-    <input placeholder="zet je antwoord hier in">
-    <input class="check" type="checkbox">
+    <input id="antwoord3_0" placeholder="Zet je antwoord hier in">
+    <input id="checkbox3_0" class="check" type="checkbox">
   </div>
   <div class="last">
-    <input placeholder="zet je antwoord hier in">
-    <input class="check" type="checkbox">
+    <input id="antwoord4_0" placeholder="Zet je antwoord hier in">
+    <input id="checkbox4_0" class="check" type="checkbox">
   </div>
 
-  <button onclick="" class="Toevoegen">Toevoegen</button>
+  <div id="vragencontainer"></div>
+
+  <button onclick="toevoegen()" class="Toevoegen">Toevoegen</button>
+  <button class="Downloadzonder" onclick="createAndDownloadFileAnswers()">Download de vragen met antwoorden</button>
+  <button class="Download" onclick="createAndDownloadFileQuestions()">Download alleen de vragen</button>
   
-  <button onclick="createAndDownloadFile()">Generate and Download Text File</button>
 </body>
 
 </html>
